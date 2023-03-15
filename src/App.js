@@ -1,7 +1,6 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import { ToastContainer } from "react-toastify";
 import AuthContextProvider from "./context/AuthContext";
-import Register from "./pages/Register";
 import AppRouter from "./router/AppRouter";
 
 const App = () => {
@@ -9,6 +8,7 @@ const App = () => {
     <div>
       <AuthContextProvider>
         <AppRouter/>
+        <ToastContainer/>
       </AuthContextProvider>
     </div>
   );
