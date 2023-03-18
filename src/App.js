@@ -6,7 +6,7 @@ import AppRouter from "./router/AppRouter";
 
 const App = () => {
   return (
-    <div>
+    <div className="dark:bg-gray-dark-main">
       <AuthContextProvider>
         <MovieContextProvider>
           <AppRouter />
