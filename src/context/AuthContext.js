@@ -1,14 +1,14 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import React, { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../firebase'
-import { toastErrorNotify, toastSuccessNotify } from '../helpers/TosatifyNotify'
+import { toastErrorNotify, toastSuccessNotify, toastWarnNotify } from '../helpers/TosatifyNotify'
 
 
 export const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState('')
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')) || false)
     const navigate = useNavigate()
     useEffect(() => {
         userObserver()
@@ -43,8 +43,10 @@ const AuthContextProvider = ({ children }) => {
             if (user) {
                 const { email, displayName, photoURL } = user
                 setCurrentUser({ email, displayName, photoURL })
+                sessionStorage.setItem("user", JSON.stringify({ email, displayName, photoURL }))
             } else {
                 setCurrentUser(false)
+                sessionStorage.clear()
             }
         })
     }
@@ -61,7 +63,22 @@ const AuthContextProvider = ({ children }) => {
             });
     }
 
-    const values = { createUser, signIn, logOut, currentUser, signUpProvider }
+    const forgotPassword = (email) => {
+        //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
+        sendPasswordResetEmail(auth, email)
+          .then(() => {
+            // Password reset email sent!
+            toastWarnNotify("Please check your mail box!");
+            // alert("Please check your mail box!");
+          })
+          .catch((err) => {
+            toastErrorNotify(err.message);
+            // alert(err.message);
+            // ..
+          });
+      };
+
+    const values = { createUser, signIn, logOut, currentUser, signUpProvider,forgotPassword }
     return (
         <AuthContext.Provider value={values}>
             {children}
