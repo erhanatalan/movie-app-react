@@ -16,7 +16,7 @@ const MovieDetail = () => {
 
   useEffect(() => {
     axios.get(movieDetailBaseUrl).then((res) => setMovieDetail(res.data)).catch(err=>console.log(err))
-  }, [])
+  }, [movieDetailBaseUrl])
   
   
   return (
