@@ -13,7 +13,7 @@ const Navbar = () => {
         data-te-navbar-ref=""
       >
         <div className="flex w-full flex-wrap items-center justify-between px-6">
-          <Link className="pr-2 text-xl font-semibold" to="/">
+          <Link data-test="movieHeader" className="pr-2 text-xl font-semibold" to="/">
             React Movie App
           </Link>
 
