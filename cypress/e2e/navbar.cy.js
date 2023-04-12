@@ -1,6 +1,6 @@
 describe("navbar test", () => {
   it("navbar", () => {
-    cy.pause();
+    // cy.pause();
     cy.visit("http://localhost:3000/");
     cy.get("[data-test='movieHeader']").contains("React Movie App");
     cy.get("[data-test='switchMode']").should("be.visible").dblclick();
@@ -11,10 +11,10 @@ describe("navbar test", () => {
     cy.url().should("include", "/");
     cy.get("[data-test='userAvatar']")
       .should("be.visible")
-      .click({ force: true });
+    // .click({ force: true });
     cy.get("[data-test='loginBtn']")
       .should("be.visible")
-      .click({ force: true });
+    // .click({ force: true });
     cy.url().should("include", "/login");
     cy.go("back");
     cy.url().should("include", "/");

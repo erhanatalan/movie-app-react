@@ -8,9 +8,8 @@ const Navbar = () => {
   const {currentUser , logOut} = useContext(AuthContext)
   return (
     <div>
-      <nav
-        className="flex w-full flex-wrap items-center justify-between bg-neutral-100 dark:bg-gray-900 py-3 dark:text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start fixed top-0 z-20"
-        data-te-navbar-ref=""
+      <nav className="flex w-full flex-wrap items-center justify-between bg-neutral-100 dark:bg-gray-900 py-3 dark:text-neutral-200 shadow-lg lg:flex-wrap lg:justify-start fixed top-0 z-20"
+      data-te-navbar-ref=""
       >
         <div className="flex w-full flex-wrap items-center justify-between px-6">
           <Link data-test="movieHeader" className="pr-2 text-xl font-semibold" to="/">
