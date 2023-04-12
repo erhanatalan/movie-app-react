@@ -28,6 +28,7 @@ const Navbar = () => {
               <span
                 className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none"
                 id="dropdownMenuButton2"
+                data-test='userAvatar'
                 role="button"
                 data-te-dropdown-toggle-ref=""
                 aria-expanded="false"
@@ -51,6 +52,7 @@ const Navbar = () => {
                     className="block w-full whitespace-nowrap bg-transparent py-2 px-4 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-white/30"
                     to="/register"
                     data-te-dropdown-item-ref=""
+                    data-test='registerBtn'
                   >
                     Register
                   </Link>
